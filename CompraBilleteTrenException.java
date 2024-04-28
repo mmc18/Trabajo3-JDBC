@@ -22,16 +22,19 @@ public class CompraBilleteTrenException extends SQLException {
 
 	public static final int NO_PLAZAS = 1;
 	public static final int NO_EXISTE_VIAJE = 2;
+	public static final int NO_EXISTE_TICKET = 3;
 
 	private int codigo; // = -1;
 	private String mensaje;
 
 	public CompraBilleteTrenException(int code) {
-		super("Error al comprar el billete","",code);
+		super("Error al comprar el billete.","",code);
 		if(code==1) {
-			this.mensaje="No hay plazas disponibles";
+			this.mensaje="No hay plazas suficientes.";
+		}else if(code == 2){
+			this.mensaje="No existe viaje para tal fecha, hora, origen y destino.";
 		}else {
-			this.mensaje="No existe el viaje";
+			this.mensaje="No existe el ticket.";
 		}
 		this.codigo=code;
 		
